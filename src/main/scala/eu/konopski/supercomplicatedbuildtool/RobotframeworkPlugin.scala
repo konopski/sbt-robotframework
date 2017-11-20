@@ -7,8 +7,10 @@ object RobotframeworkPlugin extends AutoPlugin {
   override lazy val projectSettings = Seq(commands += robotCommand)
 
   lazy val robotCommand =
-     Command.command("robot") { (state: State) =>
-        println("siemanko!")
-        state
+     Command.args("robot", "<args>") { (state: State, args: Seq[String]) =>
+        val runner = new org.robotframework.RobotRunner()
+        val result = runner.run(args.toArray)
+        if(result == 0) state
+        else state.fail
      }
 }
