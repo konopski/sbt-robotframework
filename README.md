@@ -18,5 +18,5 @@ in unix shell:
 ```sbt "robot run $PWD/src"```
 
 
-###NOTE 
+### NOTE 
 this version is yet buggy - report generation is broken due to classpath issue
